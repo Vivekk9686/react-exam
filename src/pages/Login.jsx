@@ -1,0 +1,105 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const savedUser = localStorage.getItem("user");
+
+    if (!savedUser) {
+      alert("No account found. Please register first.");
+      return;
+    }
+
+    const user = JSON.parse(savedUser);
+
+    if (
+      email === user.email &&
+      password === user.password
+    ) {
+      localStorage.setItem("login", "true");
+
+      alert("Login successful!");
+
+      navigate("/");
+    } else {
+      alert("Invalid email or password");
+    }
+  };
+
+  return (
+    <div className="container mt-5">
+
+      <div className="row justify-content-center">
+
+        <div className="col-md-5">
+
+          <h2 className="text-center mb-4">
+            Login
+          </h2>
+
+          <form onSubmit={handleLogin}>
+
+            <div className="mb-3">
+              <label className="form-label">
+                Email
+              </label>
+
+              <input
+                type="email"
+                className="form-control"
+                value={email}
+                onChange={(e) =>
+                  setEmail(e.target.value)
+                }
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">
+                Password
+              </label>
+
+              <input
+                type="password"
+                className="form-control"
+                value={password}
+                onChange={(e) =>
+                  setPassword(e.target.value)
+                }
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+            >
+              Login
+            </button>
+
+          </form>
+
+          <p className="text-center mt-3">
+            Don't have an account?{" "}
+            <Link to="/register">
+              Register
+            </Link>
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+  );
+}
+
+export default Login;

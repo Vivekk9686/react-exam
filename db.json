@@ -1,0 +1,27 @@
+{
+  "student": [
+    {
+      "name": "Vivek",
+      "rollNumber": "1014",
+      "phone": "92005813544",
+      "email": "vivekdesai@gmail.com",
+      "age": "21",
+      "class": "Web-development",
+      "grade": "A",
+      "image": "",
+      "id": "XO6ILi55G0Y"
+    },
+    {
+      "name": "Disha",
+      "rollNumber": "1015",
+      "phone": "(437) 881-8280",
+      "email": "disha@gmail.com",
+      "age": "19",
+      "class": "12",
+      "grade": "A+",
+      "image": "",
+      "id": "R48aehkJyBk"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
